@@ -25,6 +25,24 @@
             </dependency>
 
             <dependency>
+                <groupId>dev.keter</groupId>
+                <artifactId>keter-cli</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>dev.keter</groupId>
+                <artifactId>keter-spi</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>dev.keter</groupId>
+                <artifactId>keter-main</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-engine</artifactId>
                 <version>${dep.junit.version}</version>
@@ -49,11 +67,20 @@
                 <artifactId>guava</artifactId>
                 <version>${dep.google.guava.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>info.picocli</groupId>
+                <artifactId>picocli</artifactId>
+                <version>4.6.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <modules>
         <module>keter-parser</module>
+        <module>keter-cli</module>
+        <module>keter-main</module>
+        <module>keter-spi</module>
     </modules>
 
     <build>
@@ -74,6 +101,7 @@
                         <visitor>true</visitor>
                     </configuration>
                 </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
@@ -86,6 +114,18 @@
                             <include>**/Benchmark*.java</include>
                         </includes>
                     </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.skife.maven</groupId>
+                    <artifactId>really-executable-jar-maven-plugin</artifactId>
+                    <version>1.0.5</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.2.4</version>
                 </plugin>
             </plugins>
         </pluginManagement>

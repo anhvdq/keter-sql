@@ -27,7 +27,8 @@ hs_err_pid*
 # IntelliJ
 #
 *.iml
-.idea/*
+**/.idea
+**/.idea/*
 !.idea/runConfigurations/
 
 #

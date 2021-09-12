@@ -159,30 +159,4 @@ public class SqlParser {
             context.getParent().addChild(parser.createTerminalNode(context.getParent(), newToken));
         }
     }
-
-    public static void main(String[] args) {
-        SqlParser parser = new SqlParser();
-//        String sql = "select abc, xyz, rand(abc) from cdp.v3_event left join abc.v3_items on (abc = bcd) right join qwe.v3_customer using(abc, qwe) where portal_id=42348 group by abc, xyz order by abc desc limit 10";
-//        Statement stm = parser.createStatement(sql, new ParsingOptions());
-//        System.out.println(stm);
-
-//        String exp = "datediff(get(abc), qwerty(xyz))";
-//        NamedExpression expression = (NamedExpression) parser.createExpression(exp, new ParsingOptions());
-//        System.out.println("Class: " + expression.getExpression().getClass());
-//        FunctionCall func = (FunctionCall) expression.getExpression();
-//        System.out.println("Name: " + func.getName());
-//        func.getArguments().forEach(e -> {
-//            FunctionCall arg = (FunctionCall) e;
-//            System.out.println("Arg name: " + arg.getName() + " - value: " + arg.getArguments());
-//        });
-        String exp = "CONCAT(TRIM(\"CURRENT_DATE()\"), \"ABCDEF\")";
-        NamedExpression expression = (NamedExpression) parser.createExpression(exp, new ParsingOptions());
-        System.out.println("Class: " + expression.getExpression().getClass());
-        FunctionCall func = (FunctionCall) expression.getExpression();
-        System.out.println("Name: " + func.getName());
-        func.getArguments().forEach(e -> {
-            FunctionCall arg = (FunctionCall) e;
-            System.out.println("Arg name: " + arg.getName() + " - value: " + arg.getArguments());
-        });
-    }
 }
